@@ -1,0 +1,68 @@
+package com.sucem.text.RegularExpressions;
+
+import java.text.ParseException;
+import java.util.regex.*;
+
+import javax.swing.text.DefaultFormatter;
+
+/**
+ * <p>标题: 输入的正则表示式进行匹配</p>
+ *
+ * <p>描述: </p>
+ *
+ * <p>版权: Copyright (c) 2005</p>
+ *
+ * <p>公司: 上海二手车交易市场有限公司</p>
+ *
+ * @作者 孙汇洲
+ * @版本 1.0
+ */
+public class RegexFormatter extends DefaultFormatter {
+    private Pattern pattern;
+    private Matcher matcher;
+
+    public RegexFormatter() {
+        super();
+    }
+    public RegexFormatter(String pattern) throws PatternSyntaxException {
+        this();
+        setPattern(Pattern.compile(pattern));
+    }
+    public RegexFormatter(Pattern pattern) {
+            this();
+            setPattern(pattern);
+    }
+    public void setPattern(Pattern pattern) {
+        this.pattern = pattern;
+    }
+    public Pattern getPattern() {
+            return pattern;
+    }
+    protected void setMatcher(Matcher matcher) {
+        this.matcher = matcher;
+    }
+    protected Matcher getMatcher() {
+        return matcher;
+    }
+    public Object stringToValue(String text) throws ParseException {
+        Pattern pattern = getPattern();
+
+        if (pattern != null) {
+            Matcher matcher = pattern.matcher(text);
+
+            if (matcher.matches()) {
+                setMatcher(matcher);
+                return super.stringToValue(text);
+            }
+            throw new ParseException("模式不符合", 0);
+        }
+        return text;
+    }
+    public static void main(String[] args){
+        RegexFormatter rf=new RegexFormatter("\\d{3}");
+        try {
+            System.out.println(rf.stringToValue("324").toString());
+        } catch (ParseException ex) {
+        }
+    }
+}

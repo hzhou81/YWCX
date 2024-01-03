@@ -1,0 +1,44 @@
+package common;
+
+/**
+ * <p>标题: 计时器</p>
+ *
+ * <p>描述: 在规定的时间内执行一些任务,也可以停止计时器</p>
+ *
+ * <p>版权: Copyright (c) 2005</p>
+ *
+ * <p>单位: 上海二手车交易市场有限公司</p>
+ *
+ * @作者 王嘉彦,叶傲冬,孙汇洲
+ * @版本 1.0
+ */
+public class Timer extends Thread{
+    private Timerable ta;
+    private long      interval;
+    private boolean   stop    =false;
+
+    public Timer(Timerable TimerAble,long InterVal) {
+        this.ta=TimerAble;
+        interval=InterVal;
+    }
+
+    public static void main(String[] args) {
+
+    }
+
+    public void run() {
+        try {
+            Thread.sleep(interval);
+        } catch (InterruptedException ex) {
+        }
+        ta.OnTimerDoIt();
+    }
+
+    public void start(){
+        this.stop=false;
+        super.start();
+    }
+    public void exit(){
+        this.stop=true;
+    }
+}

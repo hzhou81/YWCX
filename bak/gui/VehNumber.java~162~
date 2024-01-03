@@ -1,0 +1,1203 @@
+package gui;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+import common.Param;
+import common.SucemFrameWithTimer;
+import control.ImageButton;
+import java.sql.ResultSet;
+import java.sql.*;
+import common.Regexplain;
+
+/**
+ * <p>标题: 输入车辆号牌</p>
+ *
+ * <p>描述: </p>
+ *
+ * <p>版权: Copyright (c) 2005</p>
+ *
+ * <p>单位: 上海二手车交易市场有限公司</p>
+ *
+ * @作者 王嘉彦,叶傲冬,孙汇洲
+ * @版本 1.0
+ */
+public class VehNumber extends SucemFrameWithTimer {
+    ImageButton jButton_0=new ImageButton();
+    ImageButton jButton_1=new ImageButton();
+    ImageButton jButton_2=new ImageButton();
+    ImageButton jButton_3=new ImageButton();
+    ImageButton jButton_4=new ImageButton();
+    ImageButton jButton_5=new ImageButton();
+    ImageButton jButton_6=new ImageButton();
+    ImageButton jButton_7=new ImageButton();
+    ImageButton jButton_8=new ImageButton();
+    ImageButton jButton_9=new ImageButton();
+    ImageButton jButton_A=new ImageButton();
+    ImageButton jButton_B=new ImageButton();
+    ImageButton jButton_C=new ImageButton();
+    ImageButton jButton_D=new ImageButton();
+    ImageButton jButton_E=new ImageButton();
+    ImageButton jButton_F=new ImageButton();
+    ImageButton jButton_G=new ImageButton();
+    ImageButton jButton_H=new ImageButton();
+    ImageButton jButton_I=new ImageButton();
+    ImageButton jButton_J=new ImageButton();
+    ImageButton jButton_K=new ImageButton();
+    ImageButton jButton_L=new ImageButton();
+    ImageButton jButton_M=new ImageButton();
+    ImageButton jButton_N=new ImageButton();
+    ImageButton jButton_O=new ImageButton();
+    ImageButton jButton_P=new ImageButton();
+    ImageButton jButton_Q=new ImageButton();
+    ImageButton jButton_R=new ImageButton();
+    ImageButton jButton_S=new ImageButton();
+    ImageButton jButton_T=new ImageButton();
+    ImageButton jButton_U=new ImageButton();
+    ImageButton jButton_V=new ImageButton();
+    ImageButton jButton_W=new ImageButton();
+    ImageButton jButton_X=new ImageButton();
+    ImageButton jButton_Y=new ImageButton();
+    ImageButton jButton_Z=new ImageButton();
+    ImageButton jButton_QX=new ImageButton();           //取消
+    ImageButton jButton_SYB=new ImageButton();          //上一步
+    ImageButton jButton_XYB=new ImageButton();          //下一步
+    JLabel HPHML = new JLabel();
+    JLabel jLabel2 = new JLabel();
+    JLabel jLabel3 = new JLabel();
+
+    public VehNumber(int WaitTime) {
+        super(WaitTime);
+        try {
+            jbInit();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private void jbInit() throws Exception {
+        getContentPane().setLayout(null);
+        getContentPane().setLayout(null);
+        this.setTitle("输入车牌号码");
+        jButton_0 = new ImageButton("0.jpg",120,100);
+        // jButton_0.repaint();
+        jButton_0.setBounds(new Rectangle(10, 130, 152, 108));
+        HPHML.setFont(new java.awt.Font("Dialog", Font.BOLD, 60));
+        //jLabel1.setText("123456");
+        HPHML.setBounds(new Rectangle(253, 65, 287, 54));
+        jLabel2.setFont(new java.awt.Font("Dialog", Font.BOLD, 35));
+        jLabel2.setForeground(Color.red);
+        jLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+        jLabel2.setBounds(new Rectangle(15, 67, 250, 45));
+        jLabel3.setFont(new java.awt.Font("Dialog", Font.BOLD, 40));
+        jLabel3.setText("请输入车牌号码：");
+        jLabel3.setBounds(new Rectangle(42, 20, 365, 37));
+        this.getContentPane().add(jButton_0, null);
+        jButton_1 = new ImageButton("1.jpg",120,100);
+        // jButton_1.repaint();
+        jButton_1.setBounds(new Rectangle(180, 130, 152, 108));
+        this.getContentPane().add(jButton_1, null);
+        jButton_2 = new ImageButton("2.jpg",120,100);
+        // jButton_2.repaint();
+        jButton_2.setBounds(new Rectangle(350, 130, 152, 108));
+        this.getContentPane().add(jButton_2, null);
+        jButton_3 = new ImageButton("3.jpg",120,100);
+        // jButton_3.repaint();
+        jButton_3.setBounds(new Rectangle(520, 130, 152, 108));
+        this.getContentPane().add(jButton_3, null);
+        jButton_4 = new ImageButton("4.jpg",120,100);
+        // jButton_4.repaint();
+        jButton_4.setBounds(new Rectangle(690, 130, 152, 108));
+        this.getContentPane().add(jButton_4, null);
+        jButton_5 = new ImageButton("5.jpg",120,100);
+        // jButton_5.repaint();
+        jButton_5.setBounds(new Rectangle(860, 130, 152, 108));
+        this.getContentPane().add(jButton_5, null);
+        jButton_6 = new ImageButton("6.jpg",120,100);
+        // jButton_6.repaint();
+        jButton_6.setBounds(new Rectangle(10, 230, 152, 108));
+        this.getContentPane().add(jButton_6, null);
+        jButton_7 = new ImageButton("7.jpg",120,100);
+        // jButton_7.repaint();
+        jButton_7.setBounds(new Rectangle(180, 230, 152, 108));
+        this.getContentPane().add(jButton_7, null);
+        jButton_8 = new ImageButton("8.jpg",120,100);
+        // jButton_8.repaint();
+        jButton_8.setBounds(new Rectangle(350, 230, 152, 108));
+        this.getContentPane().add(jButton_8, null);
+        jButton_9 = new ImageButton("9.jpg",120,100);
+        // jButton_9.repaint();
+        jButton_9.setBounds(new Rectangle(520, 230, 152, 108));
+        this.getContentPane().add(jButton_9, null);
+        jButton_A = new ImageButton("A.jpg",123,100);
+        // jButton_A.repaint();
+        jButton_A.setBounds(new Rectangle(690, 230, 152, 108));
+        this.getContentPane().add(jButton_A, null);
+       // jButton_A.addActionListener(new VehNumber_jButton_A_actionAdapter(this));
+        jButton_B = new ImageButton("B.jpg",123,100);
+        // jButton_B.repaint();
+        jButton_B.setBounds(new Rectangle(860, 230, 152, 108));
+        this.getContentPane().add(jButton_B, null);
+        jButton_C = new ImageButton("C.jpg",123,100);
+        // jButton_C.repaint();
+        jButton_C.setBounds(new Rectangle(10, 330, 152, 108));
+        this.getContentPane().add(jButton_C, null);
+        jButton_D = new ImageButton("D.jpg",123,100);
+        // jButton_D.repaint();
+        jButton_D.setBounds(new Rectangle(180, 330, 152, 108));
+        this.getContentPane().add(jButton_D, null);
+        jButton_E = new ImageButton("E.jpg",123,100);
+        // jButton_E.repaint();
+        jButton_E.setBounds(new Rectangle(350,330, 152, 108));
+        this.getContentPane().add(jButton_E, null);
+        jButton_F = new ImageButton("F.jpg",123,100);
+        // jButton_F.repaint();
+        jButton_F.setBounds(new Rectangle(520, 330, 152, 108));
+        this.getContentPane().add(jButton_F, null);
+        jButton_G = new ImageButton("G.jpg",123,100);
+        // jButton_G.repaint();
+        jButton_G.setBounds(new Rectangle(690, 330, 152, 108));
+        this.getContentPane().add(jButton_G, null);
+        jButton_H = new ImageButton("H.jpg",123,100);
+        // jButton_H.repaint();
+        jButton_H.setBounds(new Rectangle(860, 330, 152, 108));
+        this.getContentPane().add(jButton_H, null);
+        jButton_I = new ImageButton("I.jpg",123,100);
+        // jButton_I.repaint();
+        jButton_I.setBounds(new Rectangle(10, 430, 152, 108));
+        this.getContentPane().add(jButton_I, null);
+        jButton_J = new ImageButton("J.jpg",123,100);
+        // jButton_J.repaint();
+        jButton_J.setBounds(new Rectangle(180, 430, 152, 108));
+        this.getContentPane().add(jButton_J, null);
+        jButton_K = new ImageButton("K.jpg",123,100);
+        // jButton_K.repaint();
+        jButton_K.setBounds(new Rectangle(350,430, 152, 108));
+        this.getContentPane().add(jButton_K, null);
+        jButton_L = new ImageButton("L.jpg",123,100);
+        // jButton_L.repaint();
+        jButton_L.setBounds(new Rectangle(520, 430, 152, 108));
+        this.getContentPane().add(jButton_L, null);
+        jButton_M = new ImageButton("M.jpg",123,100);
+        // jButton_M.repaint();
+        jButton_M.setBounds(new Rectangle(690, 430, 152, 108));
+        this.getContentPane().add(jButton_M, null);
+        jButton_N = new ImageButton("N.jpg",123,100);
+        // jButton_N.repaint();
+        jButton_N.setBounds(new Rectangle(860, 430, 152, 108));
+        this.getContentPane().add(jButton_N, null);
+        jButton_O = new ImageButton("O.jpg",123,100);
+        // jButton_O.repaint();
+        jButton_O.setBounds(new Rectangle(10, 530, 152, 108));
+        this.getContentPane().add(jButton_O, null);
+        jButton_P = new ImageButton("P.jpg",123,100);
+        // jButton_P.repaint();
+        jButton_P.setBounds(new Rectangle(180, 530, 152, 108));
+        this.getContentPane().add(jButton_P, null);
+        jButton_Q = new ImageButton("Q.jpg",123,100);
+        // jButton_Q.repaint();
+        jButton_Q.setBounds(new Rectangle(350,530, 152, 108));
+        this.getContentPane().add(jButton_Q, null);
+        jButton_R = new ImageButton("R.jpg",123,100);
+        // jButton_R.repaint();
+        jButton_R.setBounds(new Rectangle(520, 530, 152, 108));
+        this.getContentPane().add(jButton_R, null);
+        jButton_S = new ImageButton("S.jpg",123,100);
+        // jButton_S.repaint();
+        jButton_S.setBounds(new Rectangle(690, 530, 152, 108));
+        this.getContentPane().add(jButton_S, null);
+        jButton_T = new ImageButton("T.jpg",123,100);
+        // jButton_T.repaint();
+        jButton_T.setBounds(new Rectangle(860, 530, 152, 108));
+        this.getContentPane().add(jButton_T, null);
+        jButton_U = new ImageButton("U.jpg",123,100);
+        // jButton_U.repaint();
+        jButton_U.setBounds(new Rectangle(10, 630, 152, 108));
+        this.getContentPane().add(jButton_U, null);
+        jButton_V = new ImageButton("V.jpg",123,100);
+        // jButton_V.repaint();
+        jButton_V.setBounds(new Rectangle(180, 630, 152, 108));
+        this.getContentPane().add(jButton_V, null);
+        jButton_W = new ImageButton("W.jpg",123,100);
+        // jButton_W.repaint();
+        jButton_W.setBounds(new Rectangle(350,630, 152, 108));
+        this.getContentPane().add(jButton_W, null);
+        jButton_X = new ImageButton("X.jpg",123,100);
+        // jButton_X.repaint();
+        jButton_X.setBounds(new Rectangle(520, 630, 152, 108));
+        this.getContentPane().add(jButton_X, null);
+        jButton_Y = new ImageButton("Y.jpg",123,100);
+        // jButton_Y.repaint();
+        jButton_Y.setBounds(new Rectangle(690, 630, 152, 108));
+        this.getContentPane().add(jButton_Y, null);
+        jButton_Z = new ImageButton("Z.jpg",123,100);
+        // jButton_Z.repaint();
+        jButton_Z.setBounds(new Rectangle(860, 630, 152, 108));
+        this.getContentPane().add(jButton_Z, null);
+        jButton_SYB = new ImageButton("上一步.jpg",123,100);
+        // jButton_SYB.repaint();
+        jButton_SYB.setBounds(new Rectangle(860, 30, 152, 100));
+        jButton_XYB = new ImageButton("下一步.jpg",123,100);
+        // jButton_XYB.repaint();
+        jButton_XYB.setBounds(new Rectangle(690, 30, 152, 100));
+        this.getContentPane().add(jButton_XYB, null);
+        jButton_QX = new ImageButton("取消.jpg",123,100);
+        // jButton_QX.repaint();
+        jButton_QX.setBounds(new Rectangle(520, 30, 155, 100));
+        jButton_0.addActionListener(new VehNumber_jButton_0_actionAdapter(this));
+        jButton_1.addActionListener(new VehNumber_jButton_1_actionAdapter(this));
+        jButton_2.addActionListener(new VehNumber_jButton_2_actionAdapter(this));
+        jButton_3.addActionListener(new VehNumber_jButton_3_actionAdapter(this));
+        jButton_4.addActionListener(new VehNumber_jButton_4_actionAdapter(this));
+        jButton_5.addActionListener(new VehNumber_jButton_5_actionAdapter(this));
+        jButton_6.addActionListener(new VehNumber_jButton_6_actionAdapter(this));
+        jButton_7.addActionListener(new VehNumber_jButton_7_actionAdapter(this));
+        jButton_8.addActionListener(new VehNumber_jButton_8_actionAdapter(this));
+        jButton_9.addActionListener(new VehNumber_jButton_9_actionAdapter(this));
+        jButton_A.addActionListener(new VehNumber_jButton_A_actionAdapter(this));
+        jButton_B.addActionListener(new VehNumber_jButton_B_actionAdapter(this));
+        jButton_C.addActionListener(new VehNumber_jButton_C_actionAdapter(this));
+        jButton_D.addActionListener(new VehNumber_jButton_D_actionAdapter(this));
+        jButton_E.addActionListener(new VehNumber_jButton_E_actionAdapter(this));
+        jButton_F.addActionListener(new VehNumber_jButton_F_actionAdapter(this));
+        jButton_G.addActionListener(new VehNumber_jButton_G_actionAdapter(this));
+        jButton_H.addActionListener(new VehNumber_jButton_H_actionAdapter(this));
+        jButton_I.addActionListener(new VehNumber_jButton_I_actionAdapter(this));
+        jButton_J.addActionListener(new VehNumber_jButton_J_actionAdapter(this));
+        jButton_K.addActionListener(new VehNumber_jButton_K_actionAdapter(this));
+        jButton_L.addActionListener(new VehNumber_jButton_L_actionAdapter(this));
+        jButton_M.addActionListener(new VehNumber_jButton_M_actionAdapter(this));
+        jButton_N.addActionListener(new VehNumber_jButton_N_actionAdapter(this));
+        jButton_O.addActionListener(new VehNumber_jButton_O_actionAdapter(this));
+        jButton_P.addActionListener(new VehNumber_jButton_P_actionAdapter(this));
+        jButton_Q.addActionListener(new VehNumber_jButton_Q_actionAdapter(this));
+        jButton_R.addActionListener(new VehNumber_jButton_R_actionAdapter(this));
+        jButton_S.addActionListener(new VehNumber_jButton_S_actionAdapter(this));
+        jButton_T.addActionListener(new VehNumber_jButton_T_actionAdapter(this));
+        jButton_U.addActionListener(new VehNumber_jButton_U_actionAdapter(this));
+        jButton_V.addActionListener(new VehNumber_jButton_V_actionAdapter(this));
+        jButton_W.addActionListener(new VehNumber_jButton_W_actionAdapter(this));
+        jButton_X.addActionListener(new VehNumber_jButton_X_actionAdapter(this));
+        jButton_Y.addActionListener(new VehNumber_jButton_Y_actionAdapter(this));
+        jButton_Z.addActionListener(new VehNumber_jButton_Z_actionAdapter(this));
+        jButton_QX.addActionListener(new VehNumber_jButton_QX_actionAdapter(this));
+        jButton_XYB.addActionListener(new VehNumber_jButton_XYB_actionAdapter(this));
+        jButton_SYB.addActionListener(new VehNumber_jButton_SYB_actionAdapter(this));
+        this.getContentPane().add(jButton_SYB, null);
+        this.getContentPane().add(jButton_QX);
+        this.getContentPane().add(HPHML);
+        this.getContentPane().add(jLabel3);
+        this.getContentPane().add(jLabel2);
+        // jLabel2.setText(Param.getInstance().getHPZL());
+        jLabel2.setText(ShowHPZLDetail(Param.getInstance().getHPZL()));
+    }
+
+    public static void main(String[] args) {
+        // VehNumber vehnumber = new VehNumber(10);
+    }
+
+    public void jButton_0_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "0";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_1_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "1";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_QX_actionPerformed(ActionEvent e) {
+        String Number;
+        Number = HPHML.getText();
+        if (Number.length() == 0) {
+            return;
+        }
+        HPHML.setText(Number.substring(0, Number.length() - 1));
+    }
+
+    public void jButton_XYB_actionPerformed(ActionEvent e) {
+        Regexplain regex=new Regexplain("[A-Z]{1}[A-Z0-9]{1}[0-9]{3,4}");
+        if(!regex.IsMatch(HPHML.getText())){
+            HPHML.setText("");
+            return;
+        }
+        Param.getInstance().setHPHM(HPHML.getText());
+        this.setVisible(false);
+        switch (Param.getInstance().GetSearchType()) {
+        case Param.YWQK:
+            VehResult vehResult = new VehResult(Param.getResultTime());
+            vehResult.setVisible(true);
+            break;
+        case Param.CLWZ:
+            VehWZ vehWz=new VehWZ(Param.getResultTime());
+            vehWz.setVisible(true);
+        }
+        this.dispose();
+    }
+
+    public void jButton_2_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "2";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+
+    }
+
+    public void jButton_3_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "3";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_4_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "4";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_5_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "5";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_6_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "6";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_7_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "7";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_8_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "8";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_9_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "9";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_A_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "A";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_B_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "B";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_C_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "C";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_D_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "D";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_E_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "E";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_F_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "F";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_G_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "G";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_H_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "H";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_I_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "I";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_J_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "J";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_K_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "K";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_L_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "L";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_M_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "M";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_N_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "N";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_O_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "O";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_P_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "P";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_Q_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "Q";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_R_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "R";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_S_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "S";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_T_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "T";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_U_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "U";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_V_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "V";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_W_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "W";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_X_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "X";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_Y_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "Y";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_Z_actionPerformed(ActionEvent e) {
+        String Number = "";
+        Number = HPHML.getText();
+        Number = Number + "Z";
+        if (Number.length() > 6) {
+            Number = Number.substring(0, 6);
+        }
+        HPHML.setText(Number);
+    }
+
+    public void jButton_SYB_actionPerformed(ActionEvent e) {
+        VehType vehtype =new VehType(Param.getTypeTime());
+        this.setVisible(false);
+        vehtype.setVisible(true);
+    }
+    private String ShowHPZLDetail(String HPZL){
+        String sql="select mc from cl.dm where dm='"+HPZL+"' and lx='GA24.7-2001'";
+        String HPZL_CHN="";
+        try {
+            ResultSet res = Param.getInstance().getDB().executeQuery(sql);
+            if(res.next()){
+                HPZL_CHN=res.getString("MC");
+            }
+            res.close();
+            Param.getInstance().getDB().colseStatement();
+        } catch (SQLException ex) {
+        }
+        return HPZL_CHN;
+    }
+}
+
+
+class VehNumber_jButton_SYB_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_SYB_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_SYB_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_Z_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_Z_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_Z_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_Y_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_Y_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_Y_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_X_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_X_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_X_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_W_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_W_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_W_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_V_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_V_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_V_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_U_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_U_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_U_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_T_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_T_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_T_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_S_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_S_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_S_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_R_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_R_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_R_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_Q_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_Q_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_Q_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_P_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_P_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_P_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_O_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_O_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_O_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_N_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_N_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_N_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_M_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_M_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_M_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_L_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_L_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_L_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_K_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_K_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_K_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_J_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_J_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_J_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_I_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_I_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_I_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_H_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_H_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_H_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_G_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_G_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_G_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_F_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_F_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_F_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_E_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_E_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_E_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_D_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_D_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_D_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_C_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_C_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_C_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_B_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_B_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_B_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_A_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_A_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_A_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_9_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_9_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_9_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_8_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_8_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_8_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_7_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_7_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_7_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_6_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_6_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_6_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_5_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_5_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_5_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_4_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_4_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_4_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_3_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_3_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_3_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_2_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_2_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_2_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_XYB_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_XYB_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_XYB_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_QX_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_QX_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_QX_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_1_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_1_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_1_actionPerformed(e);
+    }
+}
+
+
+class VehNumber_jButton_0_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_0_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_0_actionPerformed(e);
+    }
+}
+
+
+/*class VehNumber_jButton_B_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_B_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_B_actionPerformed(e);
+    }
+}*/
+
+
+/*class VehNumber_jButton_A_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_A_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+   public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_A_actionPerformed(e);
+    }
+}*/
+

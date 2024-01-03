@@ -1,0 +1,83 @@
+package common;
+
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+/**
+ * <p>标题: 窗体基类</p>
+ *
+ * <p>描述: </p>
+ *
+ * <p>版权: Copyright (c) 2005</p>
+ *
+ * <p>单位: 上海二手车交易市场有限公司</p>
+ *
+ * @作者 孙汇洲
+ * @版本 1.0
+ */
+public class SucemFrame extends JFrame implements Timerable{
+    int waitTime;
+    Timer timer;
+
+    /*
+     WaitTime:是等待的时间间隔,这里使用的是秒数
+    */
+    public SucemFrame(int WaitTime) {
+        waitTime=WaitTime;
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setUndecorated(true);
+        CheckScreenSize();
+        SetSuitableSize();
+        this.addMouseMotionListener(new SucemFrame_mouseMotionAdapter(this));
+        timer=new Timer(this,waitTime);
+        timer.start();
+    }
+    private void CheckScreenSize(){
+        // 检查显示器分辨率
+        Dimension monitorSize = Toolkit.getDefaultToolkit().getScreenSize();
+        if (monitorSize.width < 1024 || monitorSize.height < 768) {
+          JOptionPane.showMessageDialog(this, "为了最好的使用本软件，请使用1024*768的屏幕分辨率", "提示", JOptionPane.INFORMATION_MESSAGE);
+          System.exit(0);
+        }
+    }
+    private void SetSuitableSize(){
+        // 设置合理的窗体大小
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice gd = ge.getDefaultScreenDevice();
+        GraphicsConfiguration gc = gd.getDefaultConfiguration();
+        Insets inset = Toolkit.getDefaultToolkit().getScreenInsets(gc);
+        int bottom = inset.bottom;
+        int top = inset.top;
+        int left = inset.left;
+        int right = inset.right;
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) screenSize.getWidth() - left - right;
+        int y = (int) screenSize.getHeight() - top - bottom;
+        this.setSize(new Dimension(x, y));
+    }
+    public static void main(String[] args) {
+        SucemFrame sucemframe = new SucemFrame(10);
+        sucemframe.setVisible(true);
+    }
+    public void this_mouseMoved(MouseEvent e) {
+        timer.Interrupt();
+        timer=new Timer(this,waitTime);
+        timer.start();
+    }
+    public void OnTimerDoIt() {
+        this.setVisible(false);
+        this.dispose();
+    }
+}
+class SucemFrame_mouseMotionAdapter extends MouseMotionAdapter {
+    private SucemFrame adaptee;
+    SucemFrame_mouseMotionAdapter(SucemFrame adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void mouseMoved(MouseEvent e) {
+        adaptee.this_mouseMoved(e);
+    }
+}

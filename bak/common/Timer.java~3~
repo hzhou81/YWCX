@@ -1,0 +1,45 @@
+package common;
+
+/**
+ * <p>标题: 计时器</p>
+ *
+ * <p>描述: </p>
+ *
+ * <p>版权: Copyright (c) 2005</p>
+ *
+ * <p>单位: 上海二手车交易市场有限公司</p>
+ *
+ * @作者 孙汇洲
+ * @版本 1.0
+ */
+public class Timer extends Thread{
+    private Timerable ta;
+    private long interval;
+    private boolean stop=false;
+
+    public Timer(Timerable ta,long InterVal) {
+        this.ta=ta;
+        this.interval=InterVal;
+    }
+
+    public static void main(String[] args) {
+
+    }
+
+    public void run() {
+        while(stop!=true){
+            ta.onTimer();
+            try {
+                Thread.sleep(interval);
+            } catch (InterruptedException ex) {
+            }
+        }
+    }
+    public void stopIt(){
+        this.stop=true;
+    }
+    public void start(){
+        this.stop=false;
+        super.start();
+    }
+}

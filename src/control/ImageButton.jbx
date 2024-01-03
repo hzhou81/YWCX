@@ -1,0 +1,11 @@
+[PropertyInfo]
+_height,int,false,false, , ,false,<default>
+_width,int,false,false, , ,false,<default>
+img,java.awt.Image,false,false, , ,false,<default>
+imgName,String,false,false, , ,false,<default>
+JLabel1,javax.swing.JLabel,false,false, , ,false,<default>
+[IconNames]
+
+
+
+

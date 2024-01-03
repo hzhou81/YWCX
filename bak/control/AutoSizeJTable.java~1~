@@ -1,0 +1,218 @@
+package control;
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.table.*;
+/**
+ * <p>Title: 客服系统</p>
+ *
+ * <p>Description: 自动列宽的JTable</p>
+ *
+ * <p>Copyright: Copyright (c) 2005</p>
+ *
+ * <p>Company: 上海二手车交易市场</p>
+ *
+ * @author  朱辉
+ * @version 1.0
+ */
+public class AutoSizeJTable extends JTable {
+    public AutoSizeJTable() {
+        setRowSelectionAllowed(true);
+        enableInputMethods(false);
+      }
+
+      public static void main(String[] args) {
+        JSTable table1 = new JSTable();
+      }
+
+      public void setHeaderFont(Font font) {
+        getTableHeader().setFont(font);
+      }
+
+      //比较两个整型值，返回其中最大的值
+      public static int getMax(int i1, int i2) {
+        if (i1 < i2) {
+          return i2;
+        }
+        else {
+          return i1;
+        }
+      }
+
+      public int getMaxLength(int c) { //传入表单列号，得出该列最大的内容长度
+        int r = this.getRowCount();
+        int max = 0, i = 0, ilen = 0;
+        String tmp;
+        for (i = 0; i < r; i++) {
+          //ilen=j.getValueAt(i,c).toString("ISO-8859-1");//UTF-8
+          tmp = ( (String)this.getValueAt(i, c));
+          ilen = getStrLen(tmp);
+          //String tmp1=String(tmp,"UTF-8");
+          max = getMax(max, ilen);
+        }
+        tmp = this.getColumnName(c);
+        ilen = getStrLen(tmp);
+        max = getMax(max, ilen);
+        return max;
+      }
+
+      //计算字符串长度，中文字符计算成两位长度
+      public static int getStrLen(String s) {
+        char c;
+        if (s == null) {
+          return 0;
+        }
+        int ilen = s.length();
+        for (int i = 0; i < s.length(); i++) {
+          c = s.charAt(i);
+          if (c > 256) {
+            ilen++;
+          }
+        }
+        return ilen;
+      }
+
+      //设置列表控件的每一列显示长度
+      public void setTableColumnSize(int scale) {
+        setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        //计算和显示列表的显示长度
+        int c = 0, cl;
+        String tmp = "";
+        for (c = 0; c < this.getColumnCount(); c++) {
+          tmp = this.getColumnName(c);
+          cl = (getMaxLength(c)) * scale;
+          this.getColumn(tmp).setPreferredWidth(cl);
+        }
+      }
+
+      //查找某一列值等于指定值的行号，行号从0开始
+      public int findKey(int key, String value) {
+        int ir = this.getRowCount();
+        for (int i = 0; i < ir; i++) {
+          if (value.equals(this.getValueAt(i, key))) {
+            return i;
+          }
+        }
+        return -1;
+      }
+
+      //查找某一列值等于指定值的行号，行号从0开始
+      public int findKey(String key, String value) {
+        int col = getColumnId(key);
+        if (col == -1) {
+          return -1;
+        }
+        return findKey(col, value);
+      }
+
+      //从列表中根据列名取对应的列号，返回-1为未找到对应的列号
+      public int getColumnId(String colname) {
+        int ic = this.getColumnCount();
+        for (int i = 0; i < ic; i++) {
+          if (colname.equals(this.getColumnName(i))) {
+            return i;
+          }
+        }
+        return -1;
+      }
+
+      //加亮指定行
+      public void setRowSelected(int row) {
+        this.setRowSelectionInterval(row, row);
+      }
+
+      //加亮指定行
+      public void setRowSelected(String key, String value) {
+        int row = findKey(key, value);
+        if (row == -1) {
+          return;
+        }
+        this.setRowSelectionInterval(row, row);
+      }
+
+      //取得指定行范围的指定列的最小值行号
+      public int getMinValueRow(String key, int start, int end) {
+        int col = this.getColumnId(key);
+        int rowstart = start;
+        int i, min = rowstart;
+        String minval = "", tmp = "";
+        minval = this.getValueAt(rowstart, col).toString();
+        for (i = rowstart; i < end; i++) {
+          tmp = this.getValueAt(i, col).toString();
+          if (minval.compareTo(tmp) > 0) {
+            minval = tmp;
+            min = i;
+          }
+        }
+        return min;
+      }
+
+      //取得所有行范围的指定列的最小值行号
+      public int getMinValueRow(String key) {
+        return getMinValueRow(key, 0, this.getRowCount());
+      }
+
+      //将指定列按照升序排序
+      public void sortByKey(String key) {
+        int col = this.getColumnId(key);
+        int start = 0, end = this.getRowCount();
+        int i, min;
+        String minval = "", tmp = "";
+        DefaultTableModel table;
+        while (start < end) {
+          min = start;
+          minval = this.getValueAt(start, col).toString();
+          for (i = start; i < end; i++) {
+            tmp = this.getValueAt(i, col).toString();
+            if (minval.compareTo(tmp) > 0) {
+              minval = tmp;
+              min = i;
+            }
+          }
+          table = (DefaultTableModel)this.getModel();
+          table.moveRow(min, min, start);
+          start++;
+        }
+      }
+
+      public void removeRow(int row) {
+        DefaultTableModel table = (DefaultTableModel)this.getModel();
+        table.removeRow(row);
+      }
+
+      public void sortByKey(String key1, String key2) {
+        int col1 = this.getColumnId(key1);
+        int col2 = this.getColumnId(key2);
+        int start = 0, end = this.getRowCount();
+        int i, min;
+        String minval = "", tmp = "";
+        DefaultTableModel table;
+        while (start < end) {
+          min = start;
+          minval = this.getValueAt(start, col1).toString() +
+              this.getValueAt(start, col2).toString();
+          for (i = start; i < end; i++) {
+            tmp = this.getValueAt(i, col1).toString() +
+                this.getValueAt(i, col2).toString();
+            if (minval.compareTo(tmp) > 0) {
+              minval = tmp;
+              min = i;
+            }
+          }
+          table = (DefaultTableModel)this.getModel();
+          table.moveRow(min, min, start);
+          start++;
+        }
+      }
+
+      //清空Table中数据，但不清除表头
+      public void clearList() {
+        DefaultTableModel dt = (DefaultTableModel)this.getModel();
+        while (dt.getRowCount() > 0) {
+          dt.removeRow(0);
+        }
+  }
+    public static void main(String[] args) {
+        AutoSizeJTable autosizejtable = new AutoSizeJTable();
+    }
+}

@@ -1,0 +1,88 @@
+package common;
+
+/**
+ * <p>标题: 公共参数</p>
+ *
+ * <p>描述: 使用Singleton模型</p>
+ *
+ * <p>版权: Copyright (c) 2005</p>
+ *
+ * <p>单位: 上海二手车交易市场有限公司</p>
+ *
+ * @作者 孙汇洲
+ * @版本 1.0
+ */
+public  class Param {
+//<<<<<<< Param.java
+    private static Param instance=new Param();
+    // private String hphm,hpzl,yw;
+    private static final int TypeTime=10;
+    private static final int NumTime=10;
+    private static final int ResultTime=10;
+    private String VT="";
+    private String VN="";
+    private final String url="jdbc:oracle:thin:@10.0.0.203:1521:ora9";
+    private final String user="cl";
+    private final String password="cl";
+    private DataBase db=new DataBase(url,user,password);
+//=======
+    // private static Param instance=new Param();
+    private String hphm="",hpzl="",yw="";
+
+//>>>>>>> 1.3
+    public Param() {
+    }
+//<<<<<<< Param.java
+    public static int getTypeTime(){
+        return TypeTime;
+    }
+    public static int getNumTime(){
+        return NumTime;
+    }
+    public static int getResultTime(){
+            return ResultTime;
+    }
+    public String getVT(){
+        return VT;
+    }
+    public void setVT(String vt){
+        VT=vt;
+    }
+    //public Param getInstance(){
+//=======
+    public String getVN(){
+        return VN;
+    }
+    public void setVN(String vn){
+        VN=vn;
+    }
+
+    public static Param getInstance(){
+//>>>>>>> 1.3
+        return instance;
+    }
+    public String getHPHM(){
+        return hphm;
+    }
+    public void setHPHM(String HPHM){
+        hphm=HPHM;
+    }
+    public String getHPZL(){
+        return hpzl;
+    }
+    public void setHPZL(String HPZL){
+        hpzl=HPZL;
+    }
+    public String getYW(){
+        return yw;
+    }
+    public void setYW(String YW){
+        yw=YW;
+    }
+    public DataBase getDB(){
+        return db;
+    }
+    public static void main(String[] args) {
+        Param param = new Param();
+    };
+}

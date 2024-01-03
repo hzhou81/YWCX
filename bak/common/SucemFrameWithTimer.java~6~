@@ -1,0 +1,56 @@
+package common;
+
+import java.awt.*;
+import java.awt.event.*;
+
+import javax.swing.*;
+
+/**
+ * <p>标题: 窗体基类</p>
+ *
+ * <p>描述: </p>
+ *
+ * <p>版权: Copyright (c) 2005</p>
+ *
+ * <p>单位: 上海二手车交易市场有限公司</p>
+ *
+ * @作者 孙汇洲
+ * @版本 1.0
+ */
+public class SucemFrameWithTimer extends SucemFrame implements Timerable{
+    int waitTime;
+    Timer timer;
+
+    /*
+     WaitTime:是等待的时间间隔,这里使用的是秒数
+    */
+    public SucemFrameWithTimer(int WaitTime) {
+        waitTime=WaitTime;
+        this.addMouseMotionListener(new SucemFrame_mouseMotionAdapter(this));
+        timer=new Timer(this,waitTime);
+        timer.start();
+    }
+    public static void main(String[] args) {
+        SucemFrameWithTimer sucemframe = new SucemFrameWithTimer(5);
+        sucemframe.setVisible(true);
+    }
+    public void this_mouseMoved(MouseEvent e) {
+        timer.Interrupt();
+        timer=new Timer(this,waitTime);
+        timer.start();
+    }
+    public void OnTimerDoIt() {
+        this.setVisible(false);
+        this.dispose();
+    }
+}
+class SucemFrame_mouseMotionAdapter extends MouseMotionAdapter {
+    private SucemFrameWithTimer adaptee;
+    SucemFrame_mouseMotionAdapter(SucemFrameWithTimer adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void mouseMoved(MouseEvent e) {
+        adaptee.this_mouseMoved(e);
+    }
+}

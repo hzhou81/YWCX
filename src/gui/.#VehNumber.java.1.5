@@ -1,0 +1,120 @@
+package gui;
+
+import java.awt.*;
+
+import javax.swing.*;
+import common.SucemFrameWithTimer;
+//import com.borland.jbcl.layout.XYLayout;
+//import com.borland.jbcl.layout.*;
+import control.ImgButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
+import common.Param;
+
+/**
+ * <p>标题: 输入车辆号牌</p>
+ *
+ * <p>描述: </p>
+ *
+ * <p>版权: Copyright (c) 2005</p>
+ *
+ * <p>单位: 上海二手车交易市场有限公司</p>
+ *
+ * @作者 王嘉彦,叶傲冬,孙汇洲
+ * @版本 1.0
+ */
+public class VehNumber extends SucemFrameWithTimer {
+    ImgButton jButton_A;
+    ImgButton jButton_B;
+    ImgButton jButton_C;
+    ImgButton jButton_D;
+    ImgButton jButton_E;
+    ImgButton jButton_F;
+    ImgButton jButton_G;
+
+
+    public VehNumber(int WaitTime) {
+        super(WaitTime);
+        try {
+            jbInit();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private void jbInit() throws Exception {
+        getContentPane().setLayout(null);
+        this.setTitle("输入车牌号码");
+        jButton_A = new ImgButton("A.jpg",123,100);
+        jButton_A.repaint();
+        jButton_A.addActionListener(new VehNumber_jButton_A_actionAdapter(this));
+        jButton_A.setBounds(new Rectangle(0, 256, 156, 109));
+        this.getContentPane().add(jButton_A, null);
+        jButton_B = new ImgButton("B.jpg",123,100);
+        jButton_B.repaint();
+        jButton_B.setBounds(new Rectangle(170, 256, 156, 109));
+        this.getContentPane().add(jButton_B, null);
+        jButton_C = new ImgButton("C.jpg",123,100);
+        jButton_C.repaint();
+        jButton_C.setBounds(new Rectangle(340, 256, 156, 109));
+        this.getContentPane().add(jButton_C, null);
+        jButton_D = new ImgButton("D.jpg",123,100);
+        jButton_D.repaint();
+        jButton_D.setBounds(new Rectangle(510, 256, 156, 109));
+        this.getContentPane().add(jButton_D, null);
+        jButton_E = new ImgButton("E.jpg",123,100);
+        jButton_E.repaint();
+        jButton_E.setBounds(new Rectangle(680, 256, 156, 109));
+        this.getContentPane().add(jButton_E, null);
+        jButton_F = new ImgButton("F.jpg",123,100);
+        jButton_F.repaint();
+        jButton_F.setBounds(new Rectangle(850, 256, 156, 109));
+        this.getContentPane().add(jButton_F, null);
+        jButton_G = new ImgButton("G.jpg",123,100);
+        jButton_G.repaint();
+        jButton_G.setBounds(new Rectangle(0, 356, 156, 109));
+        this.getContentPane().add(jButton_G, null);
+
+    }
+
+    public static void main(String[] args) {
+        // VehNumber vehnumber = new VehNumber(10);
+    }
+
+  public void jButton_A_actionPerformed(ActionEvent e) {
+        // JOptionPane.showMessageDialog(this,"按过了","提示",JOptionPane.INFORMATION_MESSAGE);
+        Param.getInstance().setHPHM("A");
+    }
+    /*public void jButton_B_actionPerformed(ActionEvent e) {
+        // JOptionPane.showMessageDialog(this,"按过了","提示",JOptionPane.INFORMATION_MESSAGE);
+        Param.getInstance().setHPHM("B");
+    }
+   */
+
+}
+
+
+/*class VehNumber_jButton_B_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_B_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_B_actionPerformed(e);
+    }
+}*/
+
+
+class VehNumber_jButton_A_actionAdapter implements ActionListener {
+    private VehNumber adaptee;
+    VehNumber_jButton_A_actionAdapter(VehNumber adaptee) {
+        this.adaptee = adaptee;
+    }
+   public void actionPerformed(ActionEvent e) {
+        adaptee.jButton_A_actionPerformed(e);
+    }
+}
+
